@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alto Systems — Stop Losing Leads. Start Closing Deals.</title>
+  <meta name="description" content="AI-powered lead follow-up systems for real estate professionals. Built in 48 hours, responds to every lead in 60 seconds, runs forever.">
+  <meta property="og:title" content="Alto Systems — Stop Losing Leads. Start Closing Deals.">
+  <meta property="og:description" content="AI automation for real estate and local business. 60-second lead response, custom-built in 48 hours.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0A0F1E;
+      --bg-secondary: #111827;
+      --text-primary: #F9FAFB;
+      --text-secondary: #9CA3AF;
+      --brand-navy: #1E3A5F;
+      --cta: #00D4FF;
+      --border: #1F2937;
+      --green: #10b981;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    @media (min-width: 768px) { .section { padding: 6rem 0; } }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 18px; height: 1px;
+      background: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    h2.section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    /* ─── ANIMATE IN ─── */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .animate-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: var(--brand-navy);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--cta) !important;
+      color: #0A0F1E !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 7px;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      transition: opacity 0.15s, box-shadow 0.15s !important;
+    }
+    .nav-cta:hover {
+      opacity: 0.9 !important;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3) !important;
+    }
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: flex; }
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 10rem 0 7rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0A0F1E 0%, #111827 50%, #0A0F1E 100%);
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; left: 60%;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0, 212, 255, 0.06) 0%, transparent 65%);
+      border-radius: 50%;
+      animation: orb-float 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes orb-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-30px, 20px) scale(1.05); }
+      66% { transform: translate(20px, -15px) scale(0.97); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-content { position: relative; max-width: 780px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.18);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+    }
+    .hero-badge .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--cta);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    h1.hero-title {
+      font-size: clamp(3.5rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--cta);
+      color: #0A0F1E;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      transition: opacity 0.15s, box-shadow 0.15s, transform 0.1s;
+      letter-spacing: -0.01em;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-secondary:hover {
+      color: var(--text-primary);
+      border-color: rgba(249, 250, 251, 0.2);
+    }
+
+    /* Sticky booking button — mobile only */
+    .sticky-book {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--cta);
+      color: #0A0F1E;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.875rem; font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(0, 212, 255, 0.35);
+      z-index: 90;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-book:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0, 212, 255, 0.5); }
+    @media (min-width: 768px) { .sticky-book { display: none; } }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-val {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .stat-val .stat-unit { font-size: 1.1rem; font-weight: 600; }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* Social Proof Banner */
+    .social-proof-banner {
+      margin-top: 3rem;
+      padding: 2rem 2.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .social-proof-banner h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .social-proof-metrics {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .proof-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .proof-metric .metric-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cta);
+      letter-spacing: -0.02em;
+    }
+    .proof-metric .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 600px) and (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+
+    .service-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      border-color: var(--brand-navy);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      background: rgba(30, 58, 95, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .service-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .service-features li {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+    .service-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #how { background: var(--bg-primary); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+
+    .how-step { text-align: center; }
+    .how-num {
+      width: 52px; height: 52px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin: 0 auto 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .how-step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+    .how-step p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ─── PRICING ─── */
+    #pricing {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+    }
+
+    .price-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .price-card.featured {
+      border-color: var(--brand-navy);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--brand-navy);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--cta);
+      color: #0A0F1E;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.9rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .price-tier {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .price-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .price-setup {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.15rem;
+      color: var(--text-primary);
+    }
+    .price-setup .price-unit {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+    .price-monthly {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+    }
+    .price-features li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.4;
+    }
+    .price-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .price-cta.outline {
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .price-cta.outline:hover {
+      border-color: rgba(249, 250, 251, 0.25);
+      background: rgba(249, 250, 251, 0.04);
+    }
+    .price-cta.filled {
+      background: var(--cta);
+      color: #0A0F1E;
+      font-weight: 700;
+    }
+    .price-cta.filled:hover {
+      opacity: 0.9;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    /* ─── DEMO CTA ─── */
+    #demo-cta {
+      background: var(--bg-primary);
+      padding: 6rem 0;
+    }
+    .demo-cta-box {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, #131e30 100%);
+      border: 1px solid var(--brand-navy);
+      border-radius: 20px;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 250px;
+      background: radial-gradient(ellipse, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .demo-cta-box h2 {
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .demo-cta-box p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      position: relative;
+    }
+    @media (max-width: 600px) { .demo-cta-box { padding: 2.5rem 1.5rem; } }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    .contact-info h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
+    }
+    .contact-info p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .contact-detail-icon {
+      width: 32px; height: 32px;
+      background: rgba(30, 58, 95, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* Contact Form */
+    #contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    @media (max-width: 480px) { .cf-row { grid-template-columns: 1fr; } }
+
+    label.cf-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+    .cf-input, .cf-select, .cf-textarea {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      appearance: none;
+    }
+    .cf-input::placeholder, .cf-textarea::placeholder { color: #374151; }
+    .cf-input:focus, .cf-select:focus, .cf-textarea:focus {
+      border-color: rgba(0, 212, 255, 0.4);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+    }
+    .cf-textarea { resize: vertical; min-height: 100px; }
+    .cf-select option { background: var(--bg-primary); color: var(--text-primary); }
+    .cf-submit {
+      background: var(--cta);
+      color: #0A0F1E;
+      border: none;
+      border-radius: 9px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+      letter-spacing: -0.01em;
+    }
+    .cf-submit:hover {
+      opacity: 0.9;
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    }
+    #contact-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .footer-mark {
+      width: 26px; height: 26px;
+      background: var(--brand-navy);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">AS</div>
+        Alto Systems
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">What We Build</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="demo.html" class="nav-cta">See Live Demo →</a></li>
+      </ul>
+      <div class="nav-mobile-toggle" aria-label="Open navigation" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          AI Automation for Real Estate &amp; Local Business
+        </div>
+        <h1 class="hero-title">
+          Stop Losing Leads.<br />
+          Start Closing Deals.
+        </h1>
+        <p class="hero-sub">
+          AI-powered follow-up systems for real estate professionals.
+          Built in 48 hours. Responds to every lead in 60 seconds. Runs forever.
+        </p>
+        <div class="hero-cta-group">
+          <a href="demo.html" class="btn-primary">
+            See it work right now →
+          </a>
+          <a href="https://cal.com/saltwater-social-g2hqpk" target="_blank" rel="noopener" class="btn-secondary">
+            Book a Free Demo →
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="stat-val">60<span class="stat-unit">s</span></div>
+            <div class="stat-label">Response time to new leads</div>
+          </div>
+          <div>
+            <div class="stat-val">78<span class="stat-unit">%</span></div>
+            <div class="stat-label">Of sales go to first responder</div>
+          </div>
+          <div>
+            <div class="stat-val">48<span class="stat-unit">h</span></div>
+            <div class="stat-label">From kickoff to live system</div>
+          </div>
+        </div>
+
+        <div class="social-proof-banner">
+          <h3>Built in 48 hours. Runs forever.</h3>
+          <div class="social-proof-metrics">
+            <div class="proof-metric">
+              <span class="metric-val">100% automated</span>
+              <span class="metric-label">Zero manual follow-up</span>
+            </div>
+            <div class="proof-metric">
+              <span class="metric-val">24-hour build</span>
+              <span class="metric-label">Kickoff to live, fast</span>
+            </div>
+            <div class="proof-metric">
+              <span class="metric-val">$0 ongoing labor</span>
+              <span class="metric-label">System runs itself</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services" class="section" aria-label="Services">
+    <div class="container">
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title">Three systems. One problem solved.</h2>
+      <p class="section-sub">
+        Every system we build has one goal: make sure your leads hear from you before they hear from your competitor.
+      </p>
+      <div class="services-grid">
+
+        <div class="service-card animate-in">
+          <div class="service-icon" aria-hidden="true">&#9889;</div>
+          <h3>Lead Follow-Up System</h3>
+          <p>Responds to every new lead within 60 seconds and runs a personalized follow-up sequence automatically. Never miss a lead again — even at midnight.</p>
+          <ul class="service-features">
+            <li>60-second automated response</li>
+            <li>5-touch follow-up over 14 days</li>
+            <li>Works with Zillow, Facebook, your website</li>
+            <li>Real-time alerts when leads reply</li>
+            <li>Lead log dashboard</li>
+          </ul>
+        </div>
+
+        <div class="service-card animate-in" style="transition-delay: 0.1s;">
+          <div class="service-icon" aria-hidden="true">&#128260;</div>
+          <h3>Full CRM Automation</h3>
+          <p>Everything in the follow-up system plus intelligent pipeline management. Leads score themselves. Stages advance automatically. You see who's hot without checking anything.</p>
+          <ul class="service-features">
+            <li>Lead scoring based on engagement</li>
+            <li>Automatic pipeline stage advancement</li>
+            <li>Appointment scheduling in sequences</li>
+            <li>CRM integration or setup</li>
+            <li>Weekly performance reports</li>
+          </ul>
+        </div>
+
+        <div class="service-card animate-in" style="transition-delay: 0.2s;">
+          <div class="service-icon" aria-hidden="true">&#127959;</div>
+          <h3>Complete Business Stack</h3>
+          <p>The full operations layer — from first lead inquiry to post-close referral request. Onboarding, reviews, missed call recovery, and a live dashboard. Your entire business, automated.</p>
+          <ul class="service-features">
+            <li>Client onboarding automation</li>
+            <li>Missed call text-back</li>
+            <li>Review &amp; referral request automation</li>
+            <li>Live reporting dashboard</li>
+            <li>Monthly strategy review call</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how" class="section" aria-label="How it works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three steps. Zero learning curve.</h2>
+      <p class="section-sub">
+        We handle everything technical. You just watch the leads come in and the follow-ups go out.
+      </p>
+      <div class="how-grid">
+        <div class="how-step animate-in">
+          <div class="how-num" aria-hidden="true">1</div>
+          <h3>We Build It</h3>
+          <p>Tell us where your leads come from — Zillow, Facebook, your website, referrals. We connect your lead sources and build a custom follow-up sequence in your voice. Ready in 48 hours.</p>
+        </div>
+        <div class="how-step animate-in" style="transition-delay: 0.1s;">
+          <div class="how-num" aria-hidden="true">2</div>
+          <h3>It Runs</h3>
+          <p>Every new lead gets an automatic response in 60 seconds. The system logs every touch, scores engagement, and keeps warming leads on a schedule — whether you're in a showing or asleep.</p>
+        </div>
+        <div class="how-step animate-in" style="transition-delay: 0.2s;">
+          <div class="how-num" aria-hidden="true">3</div>
+          <h3>You Close</h3>
+          <p>You get real-time alerts when a lead is ready to talk. No inbox management. No chasing. Just warm conversations with people who've already been nurtured to the point of readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section id="pricing" class="section" aria-label="Pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, transparent pricing.</h2>
+      <p class="section-sub">
+        Setup fee covers custom build and integration. Monthly retainer keeps it running and optimized.
+      </p>
+      <div class="pricing-grid">
+
+        <div class="price-card animate-in">
+          <div class="price-tier">Starter</div>
+          <h3>Lead Follow-Up System</h3>
+          <div class="price-setup">$1,500 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $400 / month</div>
+          <ul class="price-features">
+            <li>60-second automated lead response</li>
+            <li>5-touch 14-day follow-up sequence</li>
+            <li>Email + SMS outreach</li>
+            <li>Lead log and CRM view</li>
+            <li>Real-time reply notifications</li>
+            <li>Monthly sequence review</li>
+          </ul>
+          <a href="#contact" class="price-cta outline">Get started</a>
+        </div>
+
+        <div class="price-card featured animate-in" style="transition-delay: 0.1s;">
+          <div class="featured-badge">Most Popular</div>
+          <div class="price-tier">Growth</div>
+          <h3>Full CRM Automation</h3>
+          <div class="price-setup">$2,500 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $600 / month</div>
+          <ul class="price-features">
+            <li>Everything in Starter</li>
+            <li>Full CRM integration</li>
+            <li>Lead scoring by engagement</li>
+            <li>Auto pipeline stage advancement</li>
+            <li>Appointment scheduling in sequences</li>
+            <li>Weekly performance reports</li>
+            <li>Quarterly strategy call</li>
+          </ul>
+          <a href="#contact" class="price-cta filled">Get started</a>
+        </div>
+
+        <div class="price-card animate-in" style="transition-delay: 0.2s;">
+          <div class="price-tier">Enterprise</div>
+          <h3>Complete Business Stack</h3>
+          <div class="price-setup">$4,000 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $800 / month</div>
+          <ul class="price-features">
+            <li>Everything in Growth</li>
+            <li>Client onboarding automation</li>
+            <li>Missed call text-back</li>
+            <li>Review request automation</li>
+            <li>Live reporting dashboard</li>
+            <li>Monthly 1:1 strategy review</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="price-cta outline">Get started</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DEMO CTA ── -->
+  <section id="demo-cta" aria-label="Demo call to action">
+    <div class="container">
+      <div class="demo-cta-box">
+        <h2>See it work right now.</h2>
+        <p>
+          Submit a test inquiry and watch the full system respond — instant acknowledgment,
+          logged to CRM, personalized follow-up in 2 minutes. No signup required.
+        </p>
+        <a href="demo.html" class="btn-primary">
+          Launch live demo →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div class="container">
+      <div class="section-label">Get In Touch</div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Ready to stop losing leads?</h3>
+          <p>
+            Book a free 20-minute call. We'll look at your current lead sources,
+            show you exactly what the system would look like for your business,
+            and give you a firm quote before you commit to anything.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">&#128231;</div>
+            <span>diego@valdessystems.com</span>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">&#128222;</div>
+            <span>Available after inquiry form</span>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon" aria-hidden="true">&#9201;</div>
+            <span>System live in 48 hours after kickoff</span>
+          </div>
+        </div>
+        <div>
+          <form id="contact-form" novalidate>
+            <div class="cf-row">
+              <div>
+                <label class="cf-label" for="cf-name">Name</label>
+                <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
+              </div>
+              <div>
+                <label class="cf-label" for="cf-email">Email</label>
+                <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="cf-row">
+              <div>
+                <label class="cf-label" for="cf-phone">Phone</label>
+                <input class="cf-input" type="tel" id="cf-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+              </div>
+              <div>
+                <label class="cf-label" for="cf-type">Business Type</label>
+                <select class="cf-select" id="cf-type" name="businessType">
+                  <option value="Real Estate Agent">Real Estate Agent</option>
+                  <option value="Mortgage Broker">Mortgage Broker</option>
+                  <option value="HVAC">HVAC Company</option>
+                  <option value="Roofing">Roofing Contractor</option>
+                  <option value="Solar">Solar Sales</option>
+                  <option value="Home Services">Home Services</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="cf-label" for="cf-message">Tell us about your lead situation</label>
+              <textarea class="cf-textarea" id="cf-message" name="message" placeholder="How many leads per month? Where do they come from? What's the main challenge?"></textarea>
+            </div>
+            <button type="submit" class="cf-submit">Send Message →</button>
+          </form>
+          <div id="contact-success" role="alert">
+            &#9989; Message received! We'll be in touch within 24 hours to schedule your free call.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">
+        <div class="footer-mark">AS</div>
+        Alto Systems
+      </a>
+      <span class="footer-copy">&copy; 2026 Alto Systems. AI Automation for Real Estate &amp; Local Business.</span>
+    </div>
+  </footer>
+
+  <a href="https://cal.com/saltwater-social-g2hqpk" target="_blank" rel="noopener" class="sticky-book" aria-label="Book a free demo">Book a Free Demo →</a>
+
+  <script>
+    // ── Intersection Observer for fade-in-up animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+    // ── Contact form → n8n webhook ──
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submit = e.target.querySelector('.cf-submit');
+      submit.textContent = 'Sending…';
+      submit.disabled = true;
+
+      const data = {
+        name: document.getElementById('cf-name').value,
+        email: document.getElementById('cf-email').value,
+        phone: document.getElementById('cf-phone').value,
+        businessType: document.getElementById('cf-type').value,
+        message: document.getElementById('cf-message').value,
+        source: 'website-contact-form'
+      };
+
+      try {
+        await fetch('http://localhost:5678/webhook/agency-contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        // CORS expected in local demo — treat as success
+      }
+
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
+    });
+
+    // ── Smooth scroll for anchor links ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
