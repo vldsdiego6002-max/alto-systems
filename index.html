@@ -98,7 +98,7 @@
 
     /* ─── LOGO PREVIEW (hidden — for Diego's comparison) ─── */
     #logo-preview {
-      display: none;
+      display: block;
       padding: 4rem 0;
       background: var(--bg-secondary);
       border-bottom: 1px solid var(--border);
@@ -410,7 +410,6 @@
     }
     .service-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-2px);
     }
     .service-icon {
       width: 40px; height: 40px;
@@ -437,6 +436,31 @@
       display: flex;
       flex-direction: column;
       gap: 0.45rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      margin-top: 0;
+    }
+    .service-card.expanded .service-features {
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+    .service-expand-btn {
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.75rem;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+    }
+    .service-expand-btn-text::after {
+      content: 'See what\'s included \2193';
+    }
+    .service-card.expanded .service-expand-btn-text::after {
+      content: 'Show less \2191';
     }
     .service-features li {
       font-size: 0.82rem;
@@ -599,7 +623,7 @@
     .demo-output { display: flex; justify-content: center; }
     .phone-mockup {
       width: 300px;
-      min-height: 420px;
+      min-height: 580px;
       background: #1A1A1E;
       border-radius: 32px;
       border: 2px solid var(--border-hover);
@@ -617,7 +641,7 @@
       background: var(--bg-primary);
       border-radius: 20px;
       padding: 1.25rem;
-      min-height: 300px;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
@@ -1166,6 +1190,9 @@
      LOGO PREVIEW (hidden — toggle show class to compare)
      ════════════════════════════════ -->
 <div id="logo-preview">
+  <div style="padding:2rem;text-align:center;">
+    <p style="font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem;">Logo Concepts — Diego pick one</p>
+  </div>
   <div class="container">
     <div class="section-label">Logo Concepts</div>
     <h2 class="section-title" style="margin-bottom: 0.5rem;">Five directions for review</h2>
@@ -1306,6 +1333,7 @@
         </div>
         <h3>Lead Follow-Up System</h3>
         <p class="service-desc">When a lead fills out a Zillow inquiry, submits your website contact form, or clicks your Facebook ad — they expect a response fast. Most agents take hours. Your system responds in 60 seconds, from your number, in your voice. By the time your competitor calls back, your lead is already having a conversation with you.</p>
+        <button class="service-expand-btn" aria-expanded="false"><span class="service-expand-btn-text"></span></button>
         <ul class="service-features">
           <li>60-second automated response</li>
           <li>5-touch follow-up over 14 days</li>
@@ -1323,6 +1351,7 @@
         </div>
         <h3>Full CRM Automation</h3>
         <p class="service-desc">Lead follow-up is just the start. This tier adds a full pipeline layer — leads get scored based on how they engage, your CRM stages advance automatically, and appointments get booked without phone tag. You open your app and see exactly who's ready to buy, who needs one more nudge, and who's going cold — without manually tracking any of it.</p>
+        <button class="service-expand-btn" aria-expanded="false"><span class="service-expand-btn-text"></span></button>
         <ul class="service-features">
           <li>Lead scoring based on engagement</li>
           <li>Automatic pipeline stage advancement</li>
@@ -1342,6 +1371,7 @@
         </div>
         <h3>Complete Business Stack</h3>
         <p class="service-desc">Your entire back office, automated. From the first inquiry text all the way through post-close review requests and referral follow-ups — this tier handles onboarding new clients, recovering missed calls, generating Google reviews after every transaction, and gives you a live dashboard showing everything happening in your pipeline in real time.</p>
+        <button class="service-expand-btn" aria-expanded="false"><span class="service-expand-btn-text"></span></button>
         <ul class="service-features">
           <li>Client onboarding automation</li>
           <li>Missed call text-back</li>
@@ -1456,8 +1486,8 @@
       <div class="price-card animate-in">
         <div class="price-tier">Starter</div>
         <h3>Lead Follow-Up System</h3>
-        <div class="price-setup">$299 <span class="price-unit">setup</span></div>
-        <div class="price-monthly">then $185 / month</div>
+        <div class="price-setup">$295 <span class="price-unit">setup</span></div>
+        <div class="price-monthly">then $189 / month</div>
         <p class="price-value-frame">Covers the cost of one recovered lead in Month 1</p>
         <ul class="price-features">
           <li>60-second automated lead response</li>
@@ -1474,8 +1504,8 @@
         <div class="featured-badge">Most Popular</div>
         <div class="price-tier">Core</div>
         <h3>Full CRM Automation</h3>
-        <div class="price-setup">$499 <span class="price-unit">setup</span></div>
-        <div class="price-monthly">then $285 / month</div>
+        <div class="price-setup">$525 <span class="price-unit">setup</span></div>
+        <div class="price-monthly">then $310 / month</div>
         <p class="price-value-frame">One $300k deal commission pays this for 3 years</p>
         <ul class="price-features">
           <li>Everything in Starter</li>
@@ -1492,8 +1522,8 @@
       <div class="price-card animate-in" style="transition-delay: 0.2s;">
         <div class="price-tier">Pro</div>
         <h3>Complete Business Stack</h3>
-        <div class="price-setup">$999 <span class="price-unit">setup</span></div>
-        <div class="price-monthly">then $485 / month</div>
+        <div class="price-setup">$975 <span class="price-unit">setup</span></div>
+        <div class="price-monthly">then $475 / month</div>
         <p class="price-value-frame">Built for agents who can't afford a missed lead</p>
         <ul class="price-features">
           <li>Everything in Core</li>
@@ -1524,10 +1554,10 @@
       <div class="calc-options" role="group" aria-label="Select services">
 
         <label class="calc-option" id="opt-followup">
-          <input type="checkbox" data-monthly="185" data-setup="299" aria-label="Lead Follow-Up System" />
+          <input type="checkbox" data-monthly="189" data-setup="295" aria-label="Lead Follow-Up System" />
           <div class="calc-option-info">
             <div class="calc-option-name">Lead Follow-Up System</div>
-            <div class="calc-option-price">$185/mo + $299 setup</div>
+            <div class="calc-option-price">$189/mo + $295 setup</div>
           </div>
         </label>
 
@@ -1796,15 +1826,15 @@
     const bundleNote = document.getElementById('calc-bundle');
 
     if (hasFollowup && hasCrm && hasAppt && hasReview && hasMissed) {
-      bundleNote.innerHTML = 'This matches our <strong>Core plan</strong> — you\'d save money bundling vs. à la carte. Book a demo to lock in the bundle rate.';
+      bundleNote.innerHTML = 'This combination matches our <strong>Core plan ($310/mo + $525 setup)</strong>. You\'re building the same thing à la carte — bundling saves you money. Ask about the Core rate on your demo call.';
       bundleNote.classList.add('show');
     } else if (hasFollowup && hasCrm && hasAppt) {
-      bundleNote.innerHTML = 'You\'ve selected our most popular combination. This maps to the <strong>Core plan at $285/mo</strong> — same features, better rate than building à la carte.';
+      bundleNote.innerHTML = 'You\'ve selected the same 3 services that make up our <strong>Core plan</strong>. À la carte this runs $' + totalMonthly + '/mo. The Core bundle rate is $310/mo — you save $' + (totalMonthly - 310) + '/mo by bundling. Mention this on the call.';
       bundleNote.classList.add('show');
-    } else if (checkedCount === 0) {
+    } else if (checkedCount === 0 || checkedCount === 1) {
       bundleNote.classList.remove('show');
     } else if (checkedCount >= 2) {
-      bundleNote.innerHTML = 'Adding more services? Bundled plans save you money — mention this estimate on your demo call and we\'ll match or beat it.';
+      bundleNote.innerHTML = 'Good start. Adding more services may qualify you for a bundle rate — book a demo and we\'ll figure out the most cost-effective setup for your specific lead sources.';
       bundleNote.classList.add('show');
     } else {
       bundleNote.classList.remove('show');
@@ -1906,6 +1936,16 @@
       triggerBtn.disabled = false;
       demoRunning = false;
     }, 8000);
+  });
+
+  /* ── Service card expand ── */
+  document.querySelectorAll('.service-expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.service-card');
+      const isExpanded = card.classList.contains('expanded');
+      card.classList.toggle('expanded', !isExpanded);
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+    });
   });
 
   /* ── Mobile nav toggle ── */
