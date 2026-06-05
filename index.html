@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alto Systems — Stop Losing Leads. Start Closing Deals.</title>
-  <meta name="description" content="AI-powered lead follow-up systems for real estate professionals. Built in 48 hours, responds to every lead in 60 seconds, runs forever.">
-  <meta property="og:title" content="Alto Systems — Stop Losing Leads. Start Closing Deals.">
-  <meta property="og:description" content="AI automation for real estate and local business. 60-second lead response, custom-built in 48 hours.">
+  <title>Alto Systems — Respond to Every Lead in 60 Seconds.</title>
+  <meta name="description" content="AI-powered lead follow-up systems for real estate professionals. Responds to every lead in 60 seconds. Custom-built in 48 hours.">
+  <link rel="canonical" href="https://alto.valdessystems.com" />
+  <meta property="og:title" content="Alto Systems — Respond to Every Lead in 60 Seconds.">
+  <meta property="og:description" content="AI automation for real estate professionals. 60-second lead response, custom-built in 48 hours.">
+  <meta property="og:url" content="https://alto.valdessystems.com">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,17 +28,19 @@
       --green: #10b981;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       line-height: 1.6;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     /* ─── UTILITIES ─── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 480px) { .container { padding: 0 2rem; } }
     .section { padding: 5rem 0; }
     @media (min-width: 768px) { .section { padding: 6rem 0; } }
 
@@ -102,8 +106,9 @@
       height: 64px;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.25rem;
     }
+    @media (min-width: 480px) { .nav-inner { padding: 0 2rem; } }
     .nav-logo {
       display: flex;
       align-items: center;
@@ -177,6 +182,7 @@
       overflow: hidden;
       background: linear-gradient(135deg, #0A0F1E 0%, #111827 50%, #0A0F1E 100%);
     }
+    @media (max-width: 480px) { #hero { padding: 8rem 0 5rem; } }
     #hero::before {
       content: '';
       position: absolute;
@@ -223,21 +229,23 @@
     }
 
     h1.hero-title {
-      font-size: clamp(3.5rem, 7vw, 5rem);
+      font-size: clamp(1.75rem, 4.5vw, 3.5rem);
       font-weight: 700;
       letter-spacing: -0.03em;
-      line-height: 1.05;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
       color: var(--text-primary);
     }
+    .hero-accent { color: var(--cta); }
 
     .hero-sub {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
-      max-width: 560px;
+      max-width: 520px;
       margin-bottom: 2.5rem;
       line-height: 1.65;
     }
+    @media (max-width: 480px) { .hero-sub { font-size: 1rem; } }
 
     .hero-cta-group {
       display: flex;
@@ -266,22 +274,10 @@
       box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
       transform: translateY(-1px);
     }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      padding: 0.9rem 1.5rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .btn-secondary:hover {
-      color: var(--text-primary);
-      border-color: rgba(249, 250, 251, 0.2);
+    .btn-primary.btn-large {
+      padding: 1.1rem 2.5rem;
+      font-size: 1.05rem;
+      border-radius: 12px;
     }
 
     /* Sticky booking button — mobile only */
@@ -306,11 +302,12 @@
     /* Hero Stats */
     .hero-stats {
       display: flex;
-      gap: 3rem;
+      gap: 2rem;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
+    @media (max-width: 480px) { .hero-stats { gap: 1.5rem; } }
     .stat-val {
       font-size: 2rem;
       font-weight: 800;
@@ -325,7 +322,7 @@
       margin-top: 0.25rem;
     }
 
-    /* Social Proof Banner */
+    /* Social Proof Banner (hero) */
     .social-proof-banner {
       margin-top: 3rem;
       padding: 2rem 2.5rem;
@@ -333,6 +330,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
     }
+    @media (max-width: 480px) { .social-proof-banner { padding: 1.5rem; } }
     .social-proof-banner h3 {
       font-size: 1rem;
       font-weight: 700;
@@ -345,6 +343,7 @@
       gap: 2.5rem;
       flex-wrap: wrap;
     }
+    @media (max-width: 480px) { .social-proof-metrics { gap: 1.25rem; } }
     .proof-metric {
       display: flex;
       flex-direction: column;
@@ -369,12 +368,12 @@
     }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-top: 3rem;
     }
-    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
-    @media (min-width: 600px) and (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 600px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .service-card {
       background: var(--bg-secondary);
@@ -436,12 +435,12 @@
     #how { background: var(--bg-primary); }
     .how-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 2rem;
       margin-top: 3.5rem;
       position: relative;
     }
-    @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 768px) { .how-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .how-step { text-align: center; }
     .how-num {
@@ -468,6 +467,55 @@
       line-height: 1.65;
     }
 
+    /* ─── SOCIAL PROOF SECTION ─── */
+    #proof {
+      background: var(--bg-primary);
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .proof-section-inner {
+      display: flex;
+      justify-content: center;
+    }
+    .proof-card {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 16px;
+      padding: 2.25rem 3rem;
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 4px 32px rgba(0, 212, 255, 0.06);
+    }
+    @media (max-width: 600px) {
+      .proof-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.75rem 1.5rem;
+        gap: 1rem;
+      }
+    }
+    .proof-card-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .proof-card-headline {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.45;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .proof-card-headline span { color: var(--cta); }
+    .proof-card-sub {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
     /* ─── PRICING ─── */
     #pricing {
       background: var(--bg-secondary);
@@ -476,14 +524,11 @@
     }
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-top: 3rem;
-      align-items: start;
     }
-    @media (max-width: 900px) {
-      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-    }
+    @media (min-width: 700px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); align-items: start; } }
 
     .price-card {
       background: var(--bg-secondary);
@@ -595,7 +640,7 @@
       box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
     }
 
-    /* ─── DEMO CTA ─── */
+    /* ─── BOOK CTA ─── */
     #demo-cta {
       background: var(--bg-primary);
       padding: 6rem 0;
@@ -609,6 +654,7 @@
       position: relative;
       overflow: hidden;
     }
+    @media (max-width: 600px) { .demo-cta-box { padding: 2.5rem 1.5rem; } }
     .demo-cta-box::before {
       content: '';
       position: absolute;
@@ -633,22 +679,20 @@
       line-height: 1.7;
       position: relative;
     }
-    @media (max-width: 600px) { .demo-cta-box { padding: 2.5rem 1.5rem; } }
 
     /* ─── CONTACT ─── */
     #contact {
       background: var(--bg-secondary);
       border-top: 1px solid var(--border);
     }
-    .contact-grid {
+    .contact-booking {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 5rem;
-      align-items: start;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
       margin-top: 3rem;
     }
-    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
-
+    @media (min-width: 768px) { .contact-booking { grid-template-columns: 1fr 1fr; gap: 5rem; } }
     .contact-info h3 {
       font-size: 1.1rem;
       font-weight: 700;
@@ -678,69 +722,16 @@
       font-size: 0.85rem;
       flex-shrink: 0;
     }
-
-    /* Contact Form */
-    #contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
-    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-    @media (max-width: 480px) { .cf-row { grid-template-columns: 1fr; } }
-
-    label.cf-label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
+    .contact-booking-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) { .contact-booking-cta { align-items: center; text-align: center; } }
+    .booking-note {
+      font-size: 0.82rem;
       color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.4rem;
-    }
-    .cf-input, .cf-select, .cf-textarea {
-      width: 100%;
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text-primary);
-      font-size: 0.92rem;
-      padding: 0.75rem 1rem;
-      outline: none;
-      font-family: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
-      appearance: none;
-    }
-    .cf-input::placeholder, .cf-textarea::placeholder { color: #374151; }
-    .cf-input:focus, .cf-select:focus, .cf-textarea:focus {
-      border-color: rgba(0, 212, 255, 0.4);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
-    }
-    .cf-textarea { resize: vertical; min-height: 100px; }
-    .cf-select option { background: var(--bg-primary); color: var(--text-primary); }
-    .cf-submit {
-      background: var(--cta);
-      color: #0A0F1E;
-      border: none;
-      border-radius: 9px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 0.95rem;
-      cursor: pointer;
-      transition: opacity 0.15s, box-shadow 0.15s;
-      font-family: inherit;
-      letter-spacing: -0.01em;
-    }
-    .cf-submit:hover {
-      opacity: 0.9;
-      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
-    }
-    #contact-success {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-      background: rgba(16, 185, 129, 0.06);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      border-radius: 12px;
-      color: var(--green);
-      font-weight: 600;
-      font-size: 0.95rem;
-      line-height: 1.6;
     }
 
     /* ─── FOOTER ─── */
@@ -755,10 +746,11 @@
       justify-content: space-between;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.25rem;
       gap: 1rem;
       flex-wrap: wrap;
     }
+    @media (min-width: 480px) { .footer-inner { padding: 0 2rem; } }
     .footer-logo {
       display: flex;
       align-items: center;
@@ -795,7 +787,7 @@
         <li><a href="#services">What We Build</a></li>
         <li><a href="#how">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="demo.html" class="nav-cta">See Live Demo →</a></li>
+        <li><a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="nav-cta">Book a Demo →</a></li>
       </ul>
       <div class="nav-mobile-toggle" aria-label="Open navigation" role="button" tabindex="0">
         <span></span><span></span><span></span>
@@ -809,22 +801,19 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          AI Automation for Real Estate &amp; Local Business
+          AI Automation for Real Estate Professionals
         </div>
         <h1 class="hero-title">
-          Stop Losing Leads.<br />
-          Start Closing Deals.
+          The average real estate agent takes 47 hours to respond to a new lead.<br />
+          <span class="hero-accent">Yours responds in 60 seconds.</span>
         </h1>
         <p class="hero-sub">
-          AI-powered follow-up systems for real estate professionals.
-          Built in 48 hours. Responds to every lead in 60 seconds. Runs forever.
+          AI-powered follow-up systems built specifically for real estate.
+          Custom-built in 48 hours. Runs forever.
         </p>
         <div class="hero-cta-group">
-          <a href="demo.html" class="btn-primary">
-            See it work right now →
-          </a>
-          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="btn-secondary">
-            Book a Free Demo →
+          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="btn-primary">
+            Book a Demo →
           </a>
         </div>
 
@@ -851,7 +840,7 @@
               <span class="metric-label">Zero manual follow-up</span>
             </div>
             <div class="proof-metric">
-              <span class="metric-val">24-hour build</span>
+              <span class="metric-val">48-hour build</span>
               <span class="metric-label">Kickoff to live, fast</span>
             </div>
             <div class="proof-metric">
@@ -945,6 +934,21 @@
     </div>
   </section>
 
+  <!-- ── SOCIAL PROOF ── -->
+  <section id="proof" aria-label="Social proof">
+    <div class="container">
+      <div class="proof-section-inner">
+        <div class="proof-card animate-in">
+          <div class="proof-card-icon">&#128200;</div>
+          <div>
+            <div class="proof-card-headline">Beta results: agents using Alto average <span>3x faster lead response.</span></div>
+            <div class="proof-card-sub">Case studies coming soon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── PRICING ── -->
   <section id="pricing" class="section" aria-label="Pricing">
     <div class="container">
@@ -958,8 +962,8 @@
         <div class="price-card animate-in">
           <div class="price-tier">Starter</div>
           <h3>Lead Follow-Up System</h3>
-          <div class="price-setup">$1,500 <span class="price-unit">setup</span></div>
-          <div class="price-monthly">then $400 / month</div>
+          <div class="price-setup">$500 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $197 / month</div>
           <ul class="price-features">
             <li>60-second automated lead response</li>
             <li>5-touch 14-day follow-up sequence</li>
@@ -968,15 +972,15 @@
             <li>Real-time reply notifications</li>
             <li>Monthly sequence review</li>
           </ul>
-          <a href="#contact" class="price-cta outline">Get started</a>
+          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="price-cta outline">Get started</a>
         </div>
 
         <div class="price-card featured animate-in" style="transition-delay: 0.1s;">
           <div class="featured-badge">Most Popular</div>
-          <div class="price-tier">Growth</div>
+          <div class="price-tier">Core</div>
           <h3>Full CRM Automation</h3>
-          <div class="price-setup">$2,500 <span class="price-unit">setup</span></div>
-          <div class="price-monthly">then $600 / month</div>
+          <div class="price-setup">$500 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $297 / month</div>
           <ul class="price-features">
             <li>Everything in Starter</li>
             <li>Full CRM integration</li>
@@ -986,16 +990,16 @@
             <li>Weekly performance reports</li>
             <li>Quarterly strategy call</li>
           </ul>
-          <a href="#contact" class="price-cta filled">Get started</a>
+          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="price-cta filled">Get started</a>
         </div>
 
         <div class="price-card animate-in" style="transition-delay: 0.2s;">
-          <div class="price-tier">Enterprise</div>
+          <div class="price-tier">Pro</div>
           <h3>Complete Business Stack</h3>
-          <div class="price-setup">$4,000 <span class="price-unit">setup</span></div>
-          <div class="price-monthly">then $800 / month</div>
+          <div class="price-setup">$1,000 <span class="price-unit">setup</span></div>
+          <div class="price-monthly">then $497 / month</div>
           <ul class="price-features">
-            <li>Everything in Growth</li>
+            <li>Everything in Core</li>
             <li>Client onboarding automation</li>
             <li>Missed call text-back</li>
             <li>Review request automation</li>
@@ -1003,34 +1007,34 @@
             <li>Monthly 1:1 strategy review</li>
             <li>Priority support</li>
           </ul>
-          <a href="#contact" class="price-cta outline">Get started</a>
+          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="price-cta outline">Get started</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ── DEMO CTA ── -->
-  <section id="demo-cta" aria-label="Demo call to action">
+  <!-- ── BOOK CTA ── -->
+  <section id="demo-cta" aria-label="Book a demo">
     <div class="container">
       <div class="demo-cta-box">
-        <h2>See it work right now.</h2>
+        <h2>See it work — 20 minutes, no commitment.</h2>
         <p>
-          Submit a test inquiry and watch the full system respond — instant acknowledgment,
-          logged to CRM, personalized follow-up in 2 minutes. No signup required.
+          Book a free call. We'll walk through your lead sources, show you exactly
+          what your system would look like, and give you a firm quote on the spot.
         </p>
-        <a href="demo.html" class="btn-primary">
-          Launch live demo →
+        <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="btn-primary">
+          Book a Free Demo →
         </a>
       </div>
     </div>
   </section>
 
   <!-- ── CONTACT ── -->
-  <section id="contact" class="section" aria-label="Contact">
+  <section id="contact" class="section" aria-label="Book a call">
     <div class="container">
-      <div class="section-label">Get In Touch</div>
-      <div class="contact-grid">
+      <div class="section-label">Get Started</div>
+      <div class="contact-booking">
         <div class="contact-info">
           <h3>Ready to stop losing leads?</h3>
           <p>
@@ -1043,53 +1047,15 @@
             <span>diego@valdessystems.com</span>
           </div>
           <div class="contact-detail">
-            <div class="contact-detail-icon" aria-hidden="true">&#128222;</div>
-            <span>Available after inquiry form</span>
-          </div>
-          <div class="contact-detail">
             <div class="contact-detail-icon" aria-hidden="true">&#9201;</div>
             <span>System live in 48 hours after kickoff</span>
           </div>
         </div>
-        <div>
-          <form id="contact-form" novalidate>
-            <div class="cf-row">
-              <div>
-                <label class="cf-label" for="cf-name">Name</label>
-                <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
-              </div>
-              <div>
-                <label class="cf-label" for="cf-email">Email</label>
-                <input class="cf-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email" />
-              </div>
-            </div>
-            <div class="cf-row">
-              <div>
-                <label class="cf-label" for="cf-phone">Phone</label>
-                <input class="cf-input" type="tel" id="cf-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
-              </div>
-              <div>
-                <label class="cf-label" for="cf-type">Business Type</label>
-                <select class="cf-select" id="cf-type" name="businessType">
-                  <option value="Real Estate Agent">Real Estate Agent</option>
-                  <option value="Mortgage Broker">Mortgage Broker</option>
-                  <option value="HVAC">HVAC Company</option>
-                  <option value="Roofing">Roofing Contractor</option>
-                  <option value="Solar">Solar Sales</option>
-                  <option value="Home Services">Home Services</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <label class="cf-label" for="cf-message">Tell us about your lead situation</label>
-              <textarea class="cf-textarea" id="cf-message" name="message" placeholder="How many leads per month? Where do they come from? What's the main challenge?"></textarea>
-            </div>
-            <button type="submit" class="cf-submit">Send Message →</button>
-          </form>
-          <div id="contact-success" role="alert">
-            &#9989; Message received! We'll be in touch within 24 hours to schedule your free call.
-          </div>
+        <div class="contact-booking-cta">
+          <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="btn-primary btn-large">
+            Book a Free Demo →
+          </a>
+          <p class="booking-note">20-minute call &middot; No commitment required</p>
         </div>
       </div>
     </div>
@@ -1102,14 +1068,13 @@
         <div class="footer-mark">AS</div>
         Alto Systems
       </a>
-      <span class="footer-copy">&copy; 2026 Alto Systems. AI Automation for Real Estate &amp; Local Business.</span>
+      <span class="footer-copy">&copy; 2026 Alto Systems. AI Automation for Real Estate.</span>
     </div>
   </footer>
 
   <a href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener" class="sticky-book" aria-label="Book a free demo">Book a Free Demo →</a>
 
   <script>
-    // ── Intersection Observer for fade-in-up animations ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1120,37 +1085,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
 
-    // ── Contact form → n8n webhook ──
-    document.getElementById('contact-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submit = e.target.querySelector('.cf-submit');
-      submit.textContent = 'Sending…';
-      submit.disabled = true;
-
-      const data = {
-        name: document.getElementById('cf-name').value,
-        email: document.getElementById('cf-email').value,
-        phone: document.getElementById('cf-phone').value,
-        businessType: document.getElementById('cf-type').value,
-        message: document.getElementById('cf-message').value,
-        source: 'website-contact-form'
-      };
-
-      try {
-        await fetch('http://localhost:5678/webhook/agency-contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-      } catch (err) {
-        // CORS expected in local demo — treat as success
-      }
-
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('contact-success').style.display = 'block';
-    });
-
-    // ── Smooth scroll for anchor links ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
