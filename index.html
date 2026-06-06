@@ -372,10 +372,6 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--border-hover);
     }
     .service-icon {
       width: 40px; height: 40px;
@@ -675,7 +671,7 @@
       gap: 1.5rem;
       margin-top: 3rem;
     }
-    @media (min-width: 700px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+    @media (min-width: 700px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
 
     .price-card {
       background: var(--bg-card);
@@ -684,6 +680,8 @@
       padding: 2rem;
       position: relative;
       transition: border-color 0.2s;
+      display: flex;
+      flex-direction: column;
     }
     .price-card.featured {
       border-color: rgba(232,160,32,0.3);
@@ -776,6 +774,7 @@
       font-weight: 600;
       text-decoration: none;
       transition: all 0.15s;
+      margin-top: auto;
     }
     .price-cta.outline {
       border: 1px solid var(--border-hover);
@@ -1084,6 +1083,17 @@
       font-size: 0.8rem;
       color: var(--text-muted);
     }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--text-secondary); }
   </style>
 </head>
 <body>
@@ -1459,50 +1469,50 @@
       <div class="calc-options" role="group" aria-label="Select services">
 
         <label class="calc-option" id="opt-followup">
-          <input type="checkbox" data-monthly="189" data-setup="295" aria-label="Lead Follow-Up System" />
+          <input type="checkbox" data-monthly="215" data-setup="295" aria-label="Lead Follow-Up System" />
           <div class="calc-option-info">
             <div class="calc-option-name">Lead Follow-Up System</div>
-            <div class="calc-option-price">$189/mo + $295 setup</div>
+            <div class="calc-option-price">$215/mo + $295 setup</div>
           </div>
         </label>
 
         <label class="calc-option" id="opt-crm">
-          <input type="checkbox" data-monthly="95" data-setup="199" aria-label="CRM Pipeline Automation" />
+          <input type="checkbox" data-monthly="110" data-setup="199" aria-label="CRM Pipeline Automation" />
           <div class="calc-option-info">
             <div class="calc-option-name">CRM Pipeline Automation</div>
-            <div class="calc-option-price">+$95/mo + $199 setup</div>
+            <div class="calc-option-price">+$110/mo + $199 setup</div>
           </div>
         </label>
 
         <label class="calc-option" id="opt-appt">
-          <input type="checkbox" data-monthly="70" data-setup="149" aria-label="Appointment Scheduling" />
+          <input type="checkbox" data-monthly="85" data-setup="149" aria-label="Appointment Scheduling" />
           <div class="calc-option-info">
             <div class="calc-option-name">Appointment Scheduling</div>
-            <div class="calc-option-price">+$70/mo + $149 setup</div>
+            <div class="calc-option-price">+$85/mo + $149 setup</div>
           </div>
         </label>
 
         <label class="calc-option" id="opt-review">
-          <input type="checkbox" data-monthly="45" data-setup="99" aria-label="Review Request Automation" />
+          <input type="checkbox" data-monthly="55" data-setup="99" aria-label="Review Request Automation" />
           <div class="calc-option-info">
             <div class="calc-option-name">Review Request Automation</div>
-            <div class="calc-option-price">+$45/mo + $99 setup</div>
+            <div class="calc-option-price">+$55/mo + $99 setup</div>
           </div>
         </label>
 
         <label class="calc-option" id="opt-missedcall">
-          <input type="checkbox" data-monthly="70" data-setup="149" aria-label="Missed Call Text-Back" />
+          <input type="checkbox" data-monthly="85" data-setup="149" aria-label="Missed Call Text-Back" />
           <div class="calc-option-info">
             <div class="calc-option-name">Missed Call Text-Back</div>
-            <div class="calc-option-price">+$70/mo + $149 setup</div>
+            <div class="calc-option-price">+$85/mo + $149 setup</div>
           </div>
         </label>
 
         <label class="calc-option" id="opt-strategy">
-          <input type="checkbox" data-monthly="95" data-setup="0" aria-label="Monthly Strategy Call" />
+          <input type="checkbox" data-monthly="110" data-setup="0" aria-label="Monthly Strategy Call" />
           <div class="calc-option-info">
             <div class="calc-option-name">Monthly Strategy Call</div>
-            <div class="calc-option-price">+$95/mo</div>
+            <div class="calc-option-price">+$110/mo</div>
           </div>
         </label>
 
@@ -1670,7 +1680,11 @@
       <svg width="22" height="22" color="#E8A020" aria-hidden="true"><use href="#logo-signal"/></svg>
       Alto Systems
     </a>
-    <span class="footer-copy">&copy; 2026 Alto Systems. AI Automation for Real Estate.</span>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+    </nav>
+    <span class="footer-copy">&copy; 2026 Alto Systems. All rights reserved.</span>
   </div>
 </footer>
 
@@ -1727,22 +1741,43 @@
     const hasAppt     = document.querySelector('#opt-appt input').checked;
     const hasReview   = document.querySelector('#opt-review input').checked;
     const hasMissed   = document.querySelector('#opt-missedcall input').checked;
+    const hasStrategy = document.querySelector('#opt-strategy input').checked;
 
     const bundleNote = document.getElementById('calc-bundle');
 
-    if (hasFollowup && hasCrm && hasAppt && hasReview && hasMissed) {
-      bundleNote.innerHTML = 'This combination matches our <strong>Core plan ($310/mo + $525 setup)</strong>. You\'re building the same thing à la carte — bundling saves you money. Ask about the Core rate on your demo call.';
+    if (checkedCount === 0) {
+      bundleNote.classList.remove('show');
+    } else if (hasFollowup && !hasCrm && !hasAppt && !hasReview && !hasMissed && !hasStrategy) {
+      // Starter: only Lead Follow-Up selected
+      bundleNote.innerHTML = 'This matches our <strong>Starter plan — $189/mo + $295 setup.</strong> You\'re getting the best available rate.';
+      bundleNote.classList.add('show');
+    } else if (hasFollowup && hasCrm && hasAppt && hasReview && hasMissed) {
+      // Pro match (strategy optional)
+      const savings = (215 + 110 + 85 + 55 + 85) - 475;
+      let html = 'This matches our <strong>Pro plan — $475/mo + $975 setup.</strong> Bundle saves you $' + savings + '/mo vs à la carte.';
+      if (hasStrategy) html += ' Monthly Strategy Call adds +$110/mo.';
+      bundleNote.innerHTML = html;
+      bundleNote.classList.add('show');
+    } else if (hasFollowup && hasCrm && hasAppt && (hasReview || hasMissed)) {
+      // Core + extras (Review and/or Missed Call outside Core bundle)
+      const extras = [];
+      if (hasReview)   extras.push('Review Request Automation (+$55/mo + $99 setup)');
+      if (hasMissed)   extras.push('Missed Call Text-Back (+$85/mo + $149 setup)');
+      if (hasStrategy) extras.push('Monthly Strategy Call (+$110/mo)');
+      const xMonthly = (hasReview ? 55 : 0) + (hasMissed ? 85 : 0) + (hasStrategy ? 110 : 0);
+      const xSetup   = (hasReview ? 99 : 0) + (hasMissed ? 149 : 0);
+      bundleNote.innerHTML = '<strong>Core plan ($310/mo + $525 setup)</strong> + ' + extras.join(' + ') + '. Total: $' + (310 + xMonthly) + '/mo + $' + (525 + xSetup) + ' setup.';
       bundleNote.classList.add('show');
     } else if (hasFollowup && hasCrm && hasAppt) {
-      bundleNote.innerHTML = 'You\'ve selected the same 3 services that make up our <strong>Core plan</strong>. À la carte this runs $' + totalMonthly + '/mo. The Core bundle rate is $310/mo — you save $' + (totalMonthly - 310) + '/mo by bundling. Mention this on the call.';
-      bundleNote.classList.add('show');
-    } else if (checkedCount === 0 || checkedCount === 1) {
-      bundleNote.classList.remove('show');
-    } else if (checkedCount >= 2) {
-      bundleNote.innerHTML = 'Good start. Adding more services may qualify you for a bundle rate — book a demo and we\'ll figure out the most cost-effective setup for your specific lead sources.';
+      // Pure Core match (strategy optional)
+      const savings = (215 + 110 + 85) - 310;
+      let html = 'This matches our <strong>Core plan — $310/mo + $525 setup.</strong> Bundle saves you $' + savings + '/mo vs à la carte.';
+      if (hasStrategy) html += ' Monthly Strategy Call adds +$110/mo.';
+      bundleNote.innerHTML = html;
       bundleNote.classList.add('show');
     } else {
-      bundleNote.classList.remove('show');
+      bundleNote.innerHTML = 'Custom package — we\'ll confirm exact pricing on the demo call.';
+      bundleNote.classList.add('show');
     }
 
     const setupNote = document.getElementById('calc-setup-note');
