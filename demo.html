@@ -3,752 +3,575 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alto Systems — Lead Follow-Up System Live Demo</title>
-  <meta name="description" content="AI-powered lead follow-up systems for real estate professionals. Built in 48 hours, responds to every lead in 60 seconds, runs forever.">
-  <meta property="og:title" content="Alto Systems — Stop Losing Leads. Start Closing Deals.">
-  <meta property="og:description" content="AI automation for real estate and local business. 60-second lead response, custom-built in 48 hours.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Live Demo — Alto Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg-primary: #0A0F1E;
-      --bg-secondary: #111827;
-      --text-primary: #F9FAFB;
-      --text-secondary: #9CA3AF;
-      --brand-navy: #1E3A5F;
-      --cta: #00D4FF;
-      --border: #1F2937;
-      --green: #10b981;
+      --bg:          #0D0D0F;
+      --bg-card:     #141416;
+      --bg-surface:  #1A1A1D;
+      --amber:       #E8A020;
+      --amber-dim:   rgba(232,160,32,0.10);
+      --amber-glow:  rgba(232,160,32,0.22);
+      --text:        #F0EEE9;
+      --text-muted:  #5A5956;
+      --text-sec:    #9A9896;
+      --border:      rgba(255,255,255,0.06);
+      --border-amb:  rgba(232,160,32,0.28);
+      --green:       #22c55e;
+      --red:         #f87171;
+      --r:           12px;
     }
 
-    html, body {
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      background: var(--bg-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      color: var(--text-primary);
-      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Header ── */
+    /* ─── HEADER ─── */
     header {
-      background: rgba(10, 15, 30, 0.9);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      height: 60px;
+      padding: 20px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      border-bottom: 1px solid var(--border);
     }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .header-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-    .header-logo-mark {
-      width: 28px; height: 28px;
-      background: var(--brand-navy);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-    .header-logo-name {
-      font-size: 0.9rem;
+    .logo {
+      font-size: 18px;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.03em;
     }
-    .header-divider {
-      width: 1px;
-      height: 20px;
-      background: var(--border);
-    }
-    .header-title {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .logo-dot {
-      width: 8px; height: 8px;
-      background: var(--cta);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
-
+    .logo span { color: var(--amber); }
     .back-link {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
+      font-size: 13px;
+      color: var(--text-sec);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: color 0.15s;
+      transition: color .2s;
     }
-    .back-link:hover { color: var(--text-primary); }
+    .back-link:hover { color: var(--amber); }
 
-    /* ── Main Layout ── */
+    /* ─── MAIN ─── */
     main {
-      max-width: 880px;
+      flex: 1;
+      max-width: 680px;
+      width: 100%;
       margin: 0 auto;
-      padding: 3.5rem 2rem 5rem;
+      padding: 72px 24px 60px;
     }
 
-    /* ── Hero ── */
-    .demo-hero {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 212, 255, 0.05);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      color: var(--text-secondary);
-      font-size: 0.72rem;
+    /* ─── HERO ─── */
+    .hero-eyebrow {
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
-    }
-    .live-dot {
-      width: 6px; height: 6px;
-      background: var(--cta);
-      border-radius: 50%;
-      animation: pulse 1.5s ease-in-out infinite;
-      flex-shrink: 0;
+      color: var(--amber);
+      margin-bottom: 14px;
     }
     h1 {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-size: clamp(26px, 5vw, 38px);
       font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
     .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 520px;
-      margin: 0 auto;
+      font-size: 16px;
+      color: var(--text-sec);
       line-height: 1.65;
+      max-width: 500px;
+      margin-bottom: 44px;
     }
 
-    /* ── How-Bar ── */
-    .how-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-    @media (max-width: 680px) {
-      .how-bar { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 400px) {
-      .how-bar { grid-template-columns: 1fr; }
-    }
-
-    .how-step {
-      padding: 1.1rem 1.25rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      border-right: 1px solid var(--border);
-    }
-    .how-step:last-child { border-right: none; }
-    @media (max-width: 680px) {
-      .how-step:nth-child(2) { border-right: none; }
-      .how-step:nth-child(3) { border-top: 1px solid var(--border); }
-      .how-step:nth-child(4) { border-right: none; border-top: 1px solid var(--border); }
-    }
-
-    .step-num {
-      width: 26px; height: 26px;
-      background: rgba(30, 58, 95, 0.5);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      border-radius: 50%;
-      font-size: 0.72rem;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-    .step-content { flex: 1; }
-    .step-title {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: block;
-      margin-bottom: 0.1rem;
-    }
-    .step-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4; }
-
-    /* ── Demo Card ── */
+    /* ─── FORM CARD ─── */
     .demo-card {
-      background: var(--bg-secondary);
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
+      border-radius: var(--r);
+      padding: 28px;
     }
-    .card-header {
-      background: rgba(30, 58, 95, 0.2);
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .card-header-text h2 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .card-header-text p {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-top: 0.15rem;
-    }
-    .status-indicator {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--green);
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .status-dot {
-      width: 6px; height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .card-body { padding: 2rem; }
-
-    /* ── Form ── */
-    #lead-form { display: flex; flex-direction: column; gap: 1.25rem; }
-
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 14px;
+      margin-bottom: 20px;
     }
-    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
-
+    @media (max-width: 500px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
     label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      color: var(--text-sec);
     }
-
-    input, select {
-      width: 100%;
-      background: var(--bg-primary);
+    input {
+      background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      color: var(--text-primary);
-      font-size: 0.92rem;
-      padding: 0.8rem 1rem;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      padding: 11px 14px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text);
       outline: none;
-      appearance: none;
-      font-family: inherit;
-    }
-    input::placeholder { color: #374151; }
-    input:focus, select:focus {
-      border-color: rgba(0, 212, 255, 0.4);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
-    }
-    select option { background: var(--bg-primary); color: var(--text-primary); }
-
-    .submit-btn {
+      transition: border-color .2s, box-shadow .2s;
       width: 100%;
-      background: var(--cta);
-      border: none;
-      border-radius: 10px;
-      color: #0A0F1E;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 1rem;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
-      letter-spacing: -0.01em;
-      margin-top: 0.5rem;
-      font-family: inherit;
     }
-    .submit-btn:hover {
-      opacity: 0.9;
-      box-shadow: 0 4px 24px rgba(0, 212, 255, 0.3);
+    input::placeholder { color: var(--text-muted); }
+    input:focus {
+      border-color: var(--border-amb);
+      box-shadow: 0 0 0 3px var(--amber-dim);
     }
-    .submit-btn:active { transform: scale(0.99); }
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-    /* ── Processing State ── */
-    #processing-state {
-      display: none;
-      flex-direction: column;
+    /* ─── GENERATE BUTTON ─── */
+    .btn-generate {
+      width: 100%;
+      padding: 13px 20px;
+      background: var(--amber);
+      color: #0D0D0F;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 3rem 2rem;
-      gap: 1.75rem;
-      text-align: center;
+      gap: 8px;
+      transition: opacity .2s, transform .15s;
     }
+    .btn-generate:hover:not(:disabled) { opacity: .90; transform: translateY(-1px); }
+    .btn-generate:active:not(:disabled) { transform: translateY(0); }
+    .btn-generate:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 
-    .spinner {
-      width: 52px; height: 52px;
-      border: 2.5px solid rgba(0, 212, 255, 0.15);
-      border-top-color: var(--cta);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .processing-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-    }
-    .processing-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      width: 100%;
-      max-width: 320px;
-    }
-    .proc-step {
+    /* ─── TRUST LINE ─── */
+    .trust-line {
+      margin-top: 14px;
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      padding: 0.55rem 0.85rem;
-      border-radius: 8px;
-      background: rgba(249, 250, 251, 0.02);
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-      text-align: left;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
     }
-    .proc-step.active {
-      color: var(--cta);
-      background: rgba(0, 212, 255, 0.05);
-      border-color: rgba(0, 212, 255, 0.2);
+    .dot {
+      width: 3px; height: 3px;
+      background: var(--text-muted);
+      border-radius: 50%;
     }
-    .proc-step.done {
-      color: var(--green);
-      background: rgba(16, 185, 129, 0.06);
-      border-color: rgba(16, 185, 129, 0.18);
-    }
-    .proc-icon { width: 16px; flex-shrink: 0; }
 
-    /* ── Success State ── */
-    #success-state {
+    /* ─── ERROR ─── */
+    .error-msg {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 2rem;
-      gap: 1.5rem;
-      text-align: center;
+      margin-top: 14px;
+      padding: 11px 14px;
+      background: rgba(248,113,113,.08);
+      border: 1px solid rgba(248,113,113,.2);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--red);
     }
-    .success-icon {
-      width: 64px; height: 64px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1.5px solid rgba(16, 185, 129, 0.3);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.75rem;
-      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes popIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .success-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--green);
-      letter-spacing: -0.02em;
-    }
-    .success-sub {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      max-width: 400px;
-      line-height: 1.65;
-    }
-    .success-timeline {
-      background: var(--bg-primary);
+    .error-msg.show { display: block; }
+
+    /* ─── GENERATING STATE ─── */
+    .state-gen {
+      display: none;
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      text-align: left;
-      width: 100%;
-      max-width: 420px;
+      border-radius: var(--r);
     }
-    .timeline-title {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.1rem;
-    }
-    .timeline-item {
+    .state-gen.show { display: block; }
+
+    .gen-row {
       display: flex;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      position: relative;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 8px;
-      top: 18px;
-      bottom: 0;
-      width: 1px;
-      background: var(--border);
-    }
-    .tl-dot {
-      width: 18px; height: 18px;
+    .pulse {
+      width: 9px; height: 9px;
+      background: var(--amber);
       border-radius: 50%;
       flex-shrink: 0;
-      margin-top: 1px;
-      font-size: 0.6rem;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      color: #0A0F1E;
+      animation: pulse 1s ease-in-out infinite;
     }
-    .tl-dot.done { background: var(--green); }
-    .tl-dot.pending {
-      background: transparent;
-      border: 1.5px solid var(--border);
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.35; transform:scale(.75); }
     }
-    .tl-text strong {
-      font-size: 0.85rem;
+    .gen-label {
+      font-size: 13px;
+      color: var(--text-sec);
+    }
+    .timer-val {
+      font-variant-numeric: tabular-nums;
       font-weight: 600;
-      display: block;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
+      color: var(--amber);
     }
-    .tl-text span { font-size: 0.78rem; color: var(--text-secondary); }
 
-    /* ── Footer Note ── */
-    .demo-footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.78rem;
-      color: #374151;
-      line-height: 1.6;
+    .progress-track {
+      height: 2px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
     }
-    .demo-footer a {
-      color: var(--text-secondary);
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--amber) 0%, #f5c35a 100%);
+      border-radius: 99px;
+      width: 0%;
+      transition: width .3s ease;
+    }
+
+    /* ─── RESPONSE STATE ─── */
+    .state-resp {
+      display: none;
+      margin-top: 24px;
+    }
+    .state-resp.show { display: block; }
+
+    .resp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .resp-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-sec);
+    }
+    .resp-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: rgba(34,197,94,.10);
+      color: var(--green);
+      border: 1px solid rgba(34,197,94,.20);
+      border-radius: 99px;
+    }
+
+    .resp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-amb);
+      border-radius: var(--r);
+      padding: 24px;
+      box-shadow: 0 0 40px var(--amber-glow), 0 0 0 1px var(--border-amb);
+      animation: fadeUp .4s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(10px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .resp-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .resp-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-again {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sec);
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-again:hover { border-color: var(--amber); color: var(--amber); }
+
+    .btn-book {
+      background: var(--amber-dim);
+      border: 1px solid var(--border-amb);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--amber);
+      cursor: pointer;
       text-decoration: none;
-      transition: color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .2s;
     }
-    .demo-footer a:hover { color: var(--text-primary); }
+    .btn-book:hover { background: var(--amber-glow); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 22px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--amber); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-left">
-      <a href="index.html" class="header-logo">
-        <div class="header-logo-mark">AS</div>
-        <span class="header-logo-name">Alto Systems</span>
+<header>
+  <div class="logo">ALTO<span>.</span></div>
+  <a href="/" class="back-link">← Back</a>
+</header>
+
+<main>
+  <p class="hero-eyebrow">Live Demo · No Signup Required</p>
+  <h1>Watch the 60-second<br>response. Right now.</h1>
+  <p class="hero-sub">
+    Enter a lead's first name and city below.
+    The AI responds the same way it would for your leads — instantly, while you watch.
+  </p>
+
+  <div class="demo-card">
+    <div class="form-row">
+      <div class="field">
+        <label for="firstName">Lead's First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="e.g. Sarah"
+          maxlength="40"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div class="field">
+        <label for="city">Their City</label>
+        <input
+          type="text"
+          id="city"
+          placeholder="e.g. Jacksonville"
+          maxlength="60"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+    </div>
+
+    <button class="btn-generate" id="genBtn" onclick="runDemo()">
+      Generate Response &nbsp;→
+    </button>
+
+    <div class="error-msg" id="errMsg"></div>
+
+    <div class="trust-line">
+      <span>Zero data stored</span>
+      <span class="dot"></span>
+      <span>No email sent</span>
+      <span class="dot"></span>
+      <span>100% on-screen</span>
+    </div>
+  </div>
+
+  <!-- GENERATING -->
+  <div class="state-gen" id="stateGen">
+    <div class="gen-row">
+      <div class="pulse"></div>
+      <span class="gen-label">AI responding · <span class="timer-val" id="timerVal">0.0s</span></span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progFill"></div>
+    </div>
+  </div>
+
+  <!-- RESPONSE -->
+  <div class="state-resp" id="stateResp">
+    <div class="resp-header">
+      <span class="resp-label">Response Generated</span>
+      <span class="resp-badge" id="respBadge">✓ 0.0s</span>
+    </div>
+    <div class="resp-card">
+      <p class="resp-meta" id="respMeta"></p>
+      <p class="resp-text" id="respText"></p>
+    </div>
+    <div class="action-row">
+      <button class="btn-again" onclick="resetDemo()">Try a different lead →</button>
+      <a class="btn-book" href="https://cal.com/diego-valdes/demo" target="_blank" rel="noopener">
+        Get this for your leads →
       </a>
-      <div class="header-divider"></div>
-      <div class="logo-dot"></div>
-      <span class="header-title">Lead Follow-Up System &mdash; Live Demo</span>
     </div>
-    <a href="index.html" class="back-link">
-      &#8592; Back to site
-    </a>
-  </header>
+  </div>
+</main>
 
-  <main>
+<footer>
+  <span>© 2026 Alto Systems</span>
+  <a href="https://cal.com/diego-valdes/demo">Book a demo →</a>
+</footer>
 
-    <div class="demo-hero">
-      <div class="live-badge">
-        <span class="live-dot"></span>
-        System Online &mdash; Live Demo
-      </div>
-      <h1>Watch the system work in real time</h1>
-      <p class="hero-sub">
-        Submit your info below. In seconds, you'll receive an automated response.
-        A personalized follow-up lands in 2 minutes. This is exactly what your leads experience.
-      </p>
-    </div>
+<script>
+  let timerInterval = null;
+  let startTime    = null;
 
-    <div class="how-bar" aria-label="How this demo works">
-      <div class="how-step">
-        <div class="step-num">1</div>
-        <div class="step-content">
-          <span class="step-title">Lead submits form</span>
-          <span class="step-desc">From Zillow, your website, Facebook ad</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="step-num">2</div>
-        <div class="step-content">
-          <span class="step-title">Instant acknowledgment</span>
-          <span class="step-desc">Email sent in &lt;60 seconds</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="step-num">3</div>
-        <div class="step-content">
-          <span class="step-title">Personalized follow-up</span>
-          <span class="step-desc">Timed sequence runs automatically</span>
-        </div>
-      </div>
-      <div class="how-step">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <span class="step-title">You get notified</span>
-          <span class="step-desc">Real-time alert when they reply</span>
-        </div>
-      </div>
-    </div>
+  // ── Progress bar simulation ──
+  const PROGRESS_STEPS = [
+    { pct: 0,   delay: 0    },
+    { pct: 35,  delay: 400  },
+    { pct: 55,  delay: 1200 },
+    { pct: 70,  delay: 2200 },
+    { pct: 82,  delay: 3400 },
+    { pct: 90,  delay: 5000 },
+    { pct: 94,  delay: 7000 },
+  ];
+  let progTimers = [];
 
-    <div class="demo-card">
-      <div class="card-header">
-        <div class="card-header-text">
-          <h2>New Lead Inquiry</h2>
-          <p>Powered by your automated follow-up system</p>
-        </div>
-        <div class="status-indicator" role="status" aria-label="System active">
-          <span class="status-dot"></span>
-          System Active
-        </div>
-      </div>
+  function startProgress() {
+    const fill = document.getElementById('progFill');
+    fill.style.width = '0%';
+    fill.style.transition = 'none';
+    progTimers.forEach(clearTimeout);
+    progTimers = [];
 
-      <div class="card-body">
+    PROGRESS_STEPS.forEach(({ pct, delay }) => {
+      const t = setTimeout(() => {
+        fill.style.transition = 'width .5s ease';
+        fill.style.width = pct + '%';
+      }, delay);
+      progTimers.push(t);
+    });
+  }
 
-        <!-- Form State -->
-        <form id="lead-form" novalidate>
-          <div class="form-row">
-            <div>
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name" />
-            </div>
-            <div>
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="john@email.com" required autocomplete="email" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(904) 555-0100" autocomplete="tel" />
-            </div>
-            <div>
-              <label for="interest">Property Interest</label>
-              <select id="interest" name="propertyInterest">
-                <option value="3BR home in Jacksonville">3BR Home in Jacksonville</option>
-                <option value="waterfront property">Waterfront Property</option>
-                <option value="investment property">Investment Property</option>
-                <option value="first home under $400K">First Home Under $400K</option>
-                <option value="luxury home $700K+">Luxury Home $700K+</option>
-                <option value="selling my current home">Selling My Current Home</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="submit-btn" id="submit-btn">
-            Submit Inquiry →
-          </button>
-        </form>
+  function finishProgress() {
+    progTimers.forEach(clearTimeout);
+    const fill = document.getElementById('progFill');
+    fill.style.transition = 'width .25s ease';
+    fill.style.width = '100%';
+  }
 
-        <!-- Processing State -->
-        <div id="processing-state" role="status" aria-live="polite">
-          <div class="spinner" aria-hidden="true"></div>
-          <div class="processing-title">Your lead is being processed&hellip;</div>
-          <div class="processing-steps" aria-label="Processing steps">
-            <div class="proc-step active" id="step-capture">
-              <svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
-              Capturing lead data
-            </div>
-            <div class="proc-step" id="step-log">
-              <svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
-              Logging to CRM
-            </div>
-            <div class="proc-step" id="step-email">
-              <svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
-              Sending acknowledgment email
-            </div>
-            <div class="proc-step" id="step-followup">
-              <svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
-              Scheduling follow-up sequence
-            </div>
-          </div>
-        </div>
+  // ── Timer ──
+  function startTimer() {
+    startTime = Date.now();
+    timerInterval = setInterval(() => {
+      const s = ((Date.now() - startTime) / 1000).toFixed(1);
+      document.getElementById('timerVal').textContent = s + 's';
+    }, 100);
+  }
 
-        <!-- Success State -->
-        <div id="success-state" role="alert">
-          <div class="success-icon" aria-hidden="true">&#9989;</div>
-          <div class="success-title">Lead captured. System running.</div>
-          <p class="success-sub" id="success-message">
-            Check your email &mdash; an acknowledgment just landed in your inbox.
-            A personalized follow-up from Sarah Mitchell at Coastal Realty Group arrives in 2 minutes.
-          </p>
-          <div class="success-timeline">
-            <div class="timeline-title">What happens next</div>
-            <div class="timeline-item">
-              <div class="tl-dot done" aria-label="Completed">&#10003;</div>
-              <div class="tl-text">
-                <strong>Lead captured &amp; logged</strong>
-                <span>Added to CRM &mdash; just now</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot done" aria-label="Completed">&#10003;</div>
-              <div class="tl-text">
-                <strong>Instant acknowledgment sent</strong>
-                <span>Delivered to inbox &mdash; within 60 seconds</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot pending" aria-label="Pending"></div>
-              <div class="tl-text">
-                <strong>Personalized follow-up</strong>
-                <span>Sending in ~2 minutes</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="tl-dot pending" aria-label="Scheduled"></div>
-              <div class="tl-text">
-                <strong>3-day check-in</strong>
-                <span>Scheduled automatically</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  function stopTimer() {
+    clearInterval(timerInterval);
+    return ((Date.now() - startTime) / 1000).toFixed(1);
+  }
 
-      </div>
-    </div>
+  // ── Main ──
+  async function runDemo() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const city      = document.getElementById('city').value.trim();
 
-    <p class="demo-footer">
-      This is a live demonstration. In production, your branding, sequences, and timing are fully customized.
-      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;
-      <a href="index.html">&#8592; Back to Alto Systems</a>
-    </p>
+    clearErr();
+    if (!firstName || !city) { showErr('Enter both a first name and city.'); return; }
+    if (firstName.length < 2 || city.length < 2) { showErr('Please enter valid values.'); return; }
 
-  </main>
+    setLoading(true);
+    startTimer();
+    startProgress();
 
-  <script>
-    const WEBHOOK_URL = 'http://localhost:5678/webhook/agency-demo';
-
-    const form = document.getElementById('lead-form');
-    const processingState = document.getElementById('processing-state');
-    const successState = document.getElementById('success-state');
-    const submitBtn = document.getElementById('submit-btn');
-
-    const steps = [
-      { el: document.getElementById('step-capture'), delay: 0 },
-      { el: document.getElementById('step-log'), delay: 900 },
-      { el: document.getElementById('step-email'), delay: 1800 },
-      { el: document.getElementById('step-followup'), delay: 2700 },
-    ];
-
-    const checkSVG = `<svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-    const circleSVG = `<svg class="proc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/></svg>`;
-
-    function animateSteps() {
-      steps.forEach(({ el, delay }, i) => {
-        setTimeout(() => {
-          if (i > 0) {
-            const prev = steps[i - 1].el;
-            prev.classList.remove('active');
-            prev.classList.add('done');
-            prev.innerHTML = checkSVG + prev.textContent.trim();
-          }
-          el.classList.add('active');
-        }, delay);
+    try {
+      const res = await fetch('/api/demo', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ firstName, city }),
       });
 
-      setTimeout(() => {
-        const last = steps[steps.length - 1].el;
-        last.classList.remove('active');
-        last.classList.add('done');
-        last.innerHTML = checkSVG + last.textContent.trim();
-      }, 3600);
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Processing…';
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const propertyInterest = document.getElementById('interest').value;
-
-      // Transition to processing view
-      form.style.display = 'none';
-      processingState.style.display = 'flex';
-      animateSteps();
-
-      // Fire webhook (CORS expected in local demo — treat all outcomes as success)
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, phone, propertyInterest }),
-        });
-      } catch (err) {
-        console.log('Webhook fired (CORS response expected in demo mode)');
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || `Error ${res.status}`);
       }
 
-      // Transition to success view after animation completes
-      setTimeout(() => {
-        processingState.style.display = 'none';
-        successState.style.display = 'flex';
-        document.getElementById('success-message').textContent =
-          `Check your email at ${email} — an acknowledgment just landed in your inbox. A personalized follow-up from Sarah Mitchell at Coastal Realty Group arrives in 2 minutes.`;
-      }, 4000);
-    });
-  </script>
+      const data    = await res.json();
+      const elapsed = stopTimer();
+      finishProgress();
+
+      // small pause so the progress bar visually completes
+      await new Promise(r => setTimeout(r, 220));
+      showResponse(data.message, firstName, city, elapsed);
+
+    } catch (err) {
+      stopTimer();
+      finishProgress();
+      setLoading(false);
+      showErr('Something went wrong — please try again.');
+      console.error(err);
+    }
+  }
+
+  function setLoading(on) {
+    const btn = document.getElementById('genBtn');
+    btn.disabled = on;
+    btn.textContent = on ? 'Generating…' : 'Generate Response  →';
+    document.getElementById('stateGen').classList.toggle('show', on);
+    document.getElementById('stateResp').classList.remove('show');
+  }
+
+  function showResponse(message, firstName, city, elapsed) {
+    setLoading(false);
+    document.getElementById('stateGen').classList.remove('show');
+    document.getElementById('respBadge').textContent = `✓ Generated in ${elapsed}s`;
+    document.getElementById('respMeta').textContent  =
+      `What ${firstName} in ${city} receives — within 60 seconds of contacting you.`;
+    document.getElementById('respText').textContent  = message;
+    document.getElementById('stateResp').classList.add('show');
+  }
+
+  function resetDemo() {
+    document.getElementById('firstName').value = '';
+    document.getElementById('city').value      = '';
+    document.getElementById('stateResp').classList.remove('show');
+    document.getElementById('stateGen').classList.remove('show');
+    clearErr();
+  }
+
+  function showErr(msg) {
+    const el = document.getElementById('errMsg');
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+  function clearErr() {
+    document.getElementById('errMsg').classList.remove('show');
+  }
+
+  // Enter key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !document.getElementById('genBtn').disabled) runDemo();
+  });
+</script>
 
 </body>
 </html>
